@@ -1,0 +1,469 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700);
+@import url(normalize.css);
+
+*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
+
+body {
+	background: #433cd1;
+	color: #FFFFFF;
+	font-size: 100%;
+	line-height: 1.25;
+	font-family: 'Lato', Arial, sans-serif;
+}
+
+a {
+	color: rgba(0,0,0,0.25);
+	text-decoration: none;
+	outline: none;
+}
+
+a:hover, a:focus {
+	color: rgba(0,0,0,0.6);
+}
+
+section {
+	padding: 0em 2em 10em;
+	text-align: center;
+}
+
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon/icomoon.eot?-9heso');
+	src:url('../fonts/icomoon/icomoon.eot?#iefix-9heso') format('embedded-opentype'),
+		url('../fonts/icomoon/icomoon.woff?-9heso') format('woff'),
+		url('../fonts/icomoon/icomoon.ttf?-9heso') format('truetype'),
+		url('../fonts/icomoon/icomoon.svg?-9heso#icomoon') format('svg');
+}
+
+.simform {
+    position: relative;
+    margin: 0 auto;
+    padding-top: 50px;
+    max-width: 450px;
+    width: 100%;
+    text-align: left;
+    font-size: 2.5em;
+}
+
+/************
+	FORM
+*************/
+.simform .submit {
+	display: none;
+}
+
+.simform ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	-webkit-transition: height 0.4s;
+	transition: height 0.4s;
+}
+
+.simform ol:before {
+    content: '';
+    background-color: rgba(0,0,0,0.1);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 65px;
+}
+
+/******************
+	PERGUNTAS
+*******************/
+.questions li {
+	z-index: 100;
+	position: relative;
+	visibility: hidden;
+	height: 0;
+	-webkit-transition: visibility 0s 0.4s, height 0s 0.4s;
+	transition: visibility 0s 0.4s, height 0s 0.4s;
+}
+
+.questions li.current,
+.no-js .questions li {
+	visibility: visible;
+	height: auto;
+	-webkit-transition: none;
+	transition: none;
+}
+
+.questions li > span {
+	display: block;
+	overflow: hidden;
+	font-size:20px;
+}
+
+.questions li > span label {
+	display: block;
+	-webkit-transition: -webkit-transform 0.4s;
+	transition: transform 0.4s;
+	-webkit-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+
+.questions li.current > span label,
+.no-js .questions li > span label {
+	-webkit-transition: none;
+	transition: none;
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+}
+
+.show-next .questions li.current > span label {
+	-webkit-animation: moveUpFromDown 0.4s both;
+	animation: moveUpFromDown 0.4s both;
+}
+
+@-webkit-keyframes moveUpFromDown {
+	from { -webkit-transform: translateY(100%); }
+	to { -webkit-transform: translateY(0); }
+}
+
+@keyframes moveUpFromDown {
+	from { -webkit-transform: translateY(100%); transform: translateY(100%); }
+	to { -webkit-transform: translateY(0); transform: translateY(0); }
+}
+
+.questions input {
+	display: block;
+    width: calc(100% - 2em);
+    border: none;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 60px;
+    padding-left: 10px;
+    margin-top: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+
+.questions .current input,
+.no-js .questions input {
+	opacity: 1;
+}
+
+.questions input:focus,
+.simform button:focus {
+	outline: none;
+}
+
+.next {
+	position: absolute;
+	right: 0;
+	bottom: -5px;
+	display: block;
+	padding: 0;
+	width: 2em;
+	height: 2em;
+	border: none;
+	background: none;
+	color: #FFFFFF;
+	text-align: center;
+	opacity: 0;
+	z-index: 100;
+	cursor: pointer;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+	-webkit-transform: translateX(-20%);
+	transform: translateX(-20%);
+	pointer-events: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.next::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	content: "\e600";
+	text-transform: none;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-family: 'icomoon';
+	line-height: 2;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.next.show {
+	opacity: 1;
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	pointer-events: auto;
+}
+ 
+.simform .progress {
+	width: 0%;
+	height: 8px;
+	background: #6861f4;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+.simform .progress::before {
+	position: absolute;
+	top: auto;
+	width: 100%;
+	height: inherit;
+	background: rgba(0,0,0,0.05);
+	content: '';
+}
+
+.simform .error-message,
+.simform .final-message {
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: opacity 0.4s;
+	transition: opacity 0.4s;
+}
+
+.simform .error-message {
+	padding: 0.4em 3.5em 0 0;
+	width: 100%;
+	color: rgba(0,0,0,0.7);
+	font-style: italic;
+	font-size: 0.4em;
+}
+
+.final-message {
+	top: 50%;
+	left: 0;
+	padding: 0.5em;
+	width: 100%;
+	text-align: center;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.error-message.show,
+.final-message.show {
+	visibility: visible;
+	opacity: 1;
+}
+
+.final-message.show {
+	-webkit-transition-delay: 0.5s;
+	transition-delay: 0.5s;
+}
+
+.simform-inner.hide {
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: opacity 0.3s, visibility 0s 0.3s;
+	transition: opacity 0.3s, visibility 0s 0.3s;
+}
+
+.no-js .simform {
+	font-size: 1.75em;
+}
+
+.no-js .questions li {
+	padding: 0 0 2em;
+}
+
+.no-js .simform .submit {
+	display: block;
+	float: right;
+	padding: 10px 20px;
+	border: none;
+	background: rgba(0,0,0,0.3);
+	color: rgba(0,0,0,0.4);
+}
+
+.no-js .simform .controls {
+	display: none;
+}
+
+input[type=text]::-ms-clear {
+    display: none;
+}
+
+@media screen and (max-width: 44.75em) {
+	.simform {
+		font-size: 1.8em;
+	}
+}
+
+@media screen and (max-width: 33.5625em) {
+	.simform {
+		font-size: 1.2em;
+	}
+}
+
+/*********** 
+   TABELA
+***********/
+.posicaoTabelas{
+	position: absolute;
+    left: 50%;
+    margin-left: -590px;
+    top: 500px;
+	display:none;
+}
+
+.posicaoTabelas .left{
+	float:left;
+	margin-right:50px;
+}
+
+.posicaoTabelas .left:nth-child(3) {
+	margin-right:0px;
+}
+
+.posicaoTabelas .titulo{
+	font-weight:bold;
+	font-size:18px;
+	margin-bottom:10px;
+}
+
+.posicaoTabelas .titulo font{
+	font-size:12px;
+	font-weight:400;
+}
+
+.tabela{
+	background:#302aab;
+	width:360px;
+	font-weight:lighter;
+    clear: both;
+}
+
+.tabela .linha {
+    width: 100%;
+    clear: both;
+    position: relative;
+    height: 40px;
+}
+
+.tabela .linha:nth-child(even){
+	background:#211c93;
+}
+
+.tabela .linha .coluna{
+	width: 34%;
+	text-align:center;
+	float:left;
+	padding: 10px 20px;
+}
+
+.tabela .linha .coluna:first-of-type {
+	width: 65%;
+	text-align:left;
+	border-right: 1px solid #433CD1;
+}
+
+.mostraTabelas{
+    position: absolute;
+    top: 400px;
+    left: 50%;
+    margin-left: -172px;
+    padding: 20px 30px;
+    border: 0px;
+    color: #FFFFFF;
+    background: #00D9FC;
+    font-weight: bold;
+    font-size: 20px;
+	display:none;
+}
+
+.mostraTabelas.aparece{
+	display:block;
+	
+   -webkit-animation: fadein 1s;
+       -moz-animation: fadein 1s; 
+        -ms-animation: fadein 1s; 
+         -o-animation: fadein 1s; 
+            animation: fadein 1s;
+}
+
+/********************
+   TITULO PRINCIPAL
+*********************/
+.tituloPrincipal {
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 70px;
+    margin-left: 115px;
+    margin-bottom: 50px;
+}
+
+.tituloPrincipal font {
+    font-size: 115px;
+}
+
+.tituloPrincipal:after{
+    content: "";
+    position: absolute;
+    background: url('../arquivos/icon_imc.png');
+    width: 150px;
+    height: 202px;
+    background-size: cover;
+    margin-top: -30px;
+	visibility: visible;
+	
+	 -webkit-animation: fadein 1s;
+       -moz-animation: fadein 1s; 
+        -ms-animation: fadein 1s; 
+         -o-animation: fadein 1s; 
+            animation: fadein 1s;
+}
+
+.tituloPrincipal.resultado{
+	text-align: center;
+	margin-top: 35px;
+	margin-left: 65px;
+}
+
+.tituloPrincipal.resultado:after{
+    margin-left: -450px;
+    margin-top: -85px;
+}
+
+/*******************
+	PLACEHOLDER
+********************/
+::-webkit-input-placeholder {
+   color: #FFFFFF;
+}
+
+:-moz-placeholder {
+   color: #FFFFFF;
+}
+
+::-moz-placeholder {
+   color: #FFFFFF;
+}
+
+:-ms-input-placeholder {  
+   color: #FFFFFF;
+}
+
+/*********************
+	  RESULTADO
+**********************/
+.resultado.show {
+    position: absolute;
+    text-align: center;
+    margin-top: -115px;
+    width: 100%;
+    left: 0px;
+    background: #2F26B0;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 20px;
+}

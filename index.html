@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>Calcule seu IMC - Índice de Massa Corporal</title>
+		<meta name="description" content="O Índice de Massa Corporal (IMC) é o padrão pelo qual você pode ver se seus níveis de gordura e peso estão dentro do recomendado pela Organização Mundial de Saúde." />
+		<meta name="keywords" content="imc, calcular, calcule, peso, idade, altura, obeso, obesidade, massa corporal, gordura" />
+		<link rel="stylesheet" type="text/css" href="css/minificado.min.css" />
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/jquery-1.12.1.min.js"></script>
+		<script src="js/jquery.mask.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+
+			<section>
+				
+				<form id="formCalcula" class="simform" autocomplete="off">
+					<div class="tituloPrincipal">
+						Calcule o seu <br /><font>IMC</font>
+					</div>
+				
+					<div class="simform-inner">
+						<ol class="questions">
+							<li>
+								<span><label for="q1">Qual o seu peso?</label></span>
+								<input id="q1" name="q1" type="text" placeholder="0,00 kg"/>
+							</li>
+							<li>
+								<span><label for="q2">Qual a sua altura?</label></span>
+								<input id="q2" name="q2" type="text" placeholder="0,00 m"/>
+							</li>
+							<li>
+								<span><label for="q3">Qual a sua idade?</label></span>
+								<input id="q3" name="q3" type="text" placeholder="0 anos"/>
+							</li>
+						</ol>
+						
+						<button class="submit" type="submit">Send answers</button>
+						<div class="controls">
+							<button class="next"></button>
+							<div class="progress"></div>
+							<span class="number">
+								<span class="number-current"></span>
+								<span class="number-total"></span>
+							</span>
+						
+							<span class="error-message"></span>
+						</div>
+					</div>				
+							
+					<button class="mostraTabelas">
+						Confira a tabela de classificação
+					</button>			
+				</form>			
+				<span class="resultado"></span>
+				
+			</section>
+				<div class="posicaoTabelas">
+					<!-- Crianças e Jovens -->
+					<div class="left">
+						<div class="titulo">
+							Crianças e Jovens <font>(até 20 anos)</font>
+						</div>
+					
+						<div class="tabela">
+							<div class="linha">
+								<div class="coluna">CLASSIFICAÇÃO</div>
+								<div class="coluna">IMC</div>
+							</div>	
+							
+							<div class="linha">
+								<div class="coluna">Baixo Peso</div>
+								<div class="coluna"><18,5</div>
+							</div>	
+							
+							<div class="linha">
+								<div class="coluna">Eutrofia (peso ideal)</div>
+								<div class="coluna">18,5 a 24,9</div>
+							</div>
+							
+							<div class="linha">
+								<div class="coluna">Excesso de peso</div>
+								<div class="coluna">25 a 29,9</div>
+							</div>
+							
+							<div class="linha">
+								<div class="coluna">Obesidade</div>
+								<div class="coluna">>30</div>
+							</div>						
+						</div>
+					</div>
+					
+					<!-- Adultos -->
+					<div class="left">
+						<div class="titulo">
+							Adultos <font>(entre 21 e 65 anos)</font>
+						</div>
+					
+						<div class="tabela">
+							<div class="linha">
+								<div class="coluna">CLASSIFICAÇÃO</div>
+								<div class="coluna">IMC</div>
+							</div>	
+							
+							<div class="linha">
+								<div class="coluna">Baixo Peso</div>
+								<div class="coluna"><18,5</div>
+							</div>	
+							
+							<div class="linha">
+								<div class="coluna">Eutrofia (peso ideal)</div>
+								<div class="coluna">18,5 a 24,9</div>
+							</div>
+							
+							<div class="linha">
+								<div class="coluna">Pré-obesidade</div>
+								<div class="coluna">25 a 29,9</div>
+							</div>
+							
+							<div class="linha">
+								<div class="coluna">Obesidade, grau I</div>
+								<div class="coluna">30 a 34,9</div>
+							</div>	
+							
+							<div class="linha">
+								<div class="coluna">Obesidade, grau II</div>
+								<div class="coluna">35 a 39,9</div>
+							</div>	
+							
+							<div class="linha">
+								<div class="coluna">Obesidade mórbida</div>
+								<div class="coluna">>40</div>
+							</div>						
+						</div>
+					</div>
+					
+					<!-- Idosos -->
+					<div class="left">
+						<div class="titulo">
+							Idosos <font>(a partir de 66 anos)</font>
+						</div>
+					
+						<div class="tabela">
+							<div class="linha">
+								<div class="coluna">CLASSIFICAÇÃO</div>
+								<div class="coluna">IMC</div>
+							</div>	
+							
+							<div class="linha">
+								<div class="coluna">Desnutrição</div>
+								<div class="coluna"><22</div>
+							</div>	
+							
+							<div class="linha">
+								<div class="coluna">Risco de desnutrição</div>
+								<div class="coluna">22 a 23,9</div>
+							</div>
+							
+							<div class="linha">
+								<div class="coluna">Eutrofia (peso ideal)</div>
+								<div class="coluna">24 a 26,9</div>
+							</div>
+							
+							<div class="linha">
+								<div class="coluna">Pré-Obesidade</div>
+								<div class="coluna">27 a 32</div>
+							</div>	
+							
+							<div class="linha">
+								<div class="coluna">Obesidade</div>
+								<div class="coluna">>32</div>
+							</div>						
+						</div>
+					</div>
+				</div>
+					
+		<script src="js/classie.js"></script>
+		<script src="js/stepsForm.js"></script>
+		<script src="js/minificado.min.js"></script>
+	</div>
+	</body>
+</html>
